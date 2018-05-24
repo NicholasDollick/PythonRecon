@@ -1,5 +1,7 @@
-from socket import gethostbyname
+import os
 
 def get_ip(url):
-    return gethostbyname(url)
-
+    cmd = "host " + url
+    process = os.popen(cmd)
+    ip = str(process.read()).split()[3]
+    return ip
